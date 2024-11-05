@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+@import "https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css";
+
+* {
+    background-color: #212529;
+}
+
+nav {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-color: #FFF;
+}
+
+div {
+  color: #FFF;
+}
+
+.content {
+  padding: 10px 50px;
+}
