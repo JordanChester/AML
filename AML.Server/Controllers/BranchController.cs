@@ -1,5 +1,6 @@
 ﻿using AML.Server.Interfaces;
 using AML.Server.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace AML.Server.Controllers
 {
@@ -17,7 +18,6 @@ namespace AML.Server.Controllers
         public async Task CreateBranch(BranchModel newBranch)
         {
             // add logic
-            return null;
         }
 
         public async Task<BranchModel> GetBranch(int branchId)

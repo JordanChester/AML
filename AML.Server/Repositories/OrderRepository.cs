@@ -14,19 +14,16 @@ namespace AML.Server.Repositories
         public async Task ReserveMedia(int mediaId, int accountId)
         {
             // add logic
-            return null;
         }
 
         public async Task BorrowMedia(int mediaId, int accountId, DateTime returnDate)
         {
             // add logic
-            return null;
         }
 
         public async Task ReturnMedia(int mediaId, int accountId, DateTime dateReturned)
         {
             // add logic
-            return null;
         }
     }
 }
