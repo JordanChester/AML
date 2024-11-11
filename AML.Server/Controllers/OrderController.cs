@@ -1,4 +1,5 @@
 ﻿using AML.Server.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
 namespace AML.Server.Controllers
 {
@@ -17,21 +18,18 @@ namespace AML.Server.Controllers
         public async Task ReserveMedia(int mediaId, int accountId)
         {
             // add logic
-            return null;
         }
 
         [HttpPost]
         public async Task BorrowMedia(int mediaId, int accountId, DateTime returnDate)
         {
             // add logic
-            return null;
         }
 
         [HttpPost]
         public async Task ReturnMedia(int mediaId, int accountId, DateTime dateReturned)
         {
             // add logic
-            return null;
         }
     }
 }

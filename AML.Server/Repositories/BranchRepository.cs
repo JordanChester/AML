@@ -15,7 +15,6 @@ namespace AML.Server.Repositories
         public async Task CreateBranch(BranchModel newBranch)
         {
             // add logic
-            return null;
         }
 
         public async Task<BranchModel> GetBranch(int branchId)
