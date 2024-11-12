@@ -4,6 +4,6 @@ namespace AML.Server.Interfaces
 {
     public interface IMediaRepository
     {
-        Task<List<MediaModel>> SearchMedia(string searchTerm);
+        Task<List<Media>> SearchMedia(string searchTerm);
     }
 }
