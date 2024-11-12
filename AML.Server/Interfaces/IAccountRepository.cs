@@ -4,9 +4,9 @@ namespace AML.Server.Interfaces
 {
     public interface IAccountRepository
     {
-        Task RegisterAccount(AccountModel newAccount);
+        Task RegisterAccount(Account newAccount);
         Task<bool> VerifyLogin(string email, string password);
-        Task<AccountModel> GetAccount(string email, string password);
+        Task<Account> GetAccount(string email, string password);
         Task UpdatePhoneNumber(string newPhoneNumber);
         Task UpdateAddress(string newAddress);
         Task ChangePassword(string newPassword);

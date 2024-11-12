@@ -12,7 +12,7 @@ namespace AML.Server.Repositories
             /*Assign injected context to declared above*/
         }
 
-        public Task RegisterAccount(AccountModel newAccount) 
+        public Task RegisterAccount(Account newAccount) 
         {
             // add logic
             return null;
@@ -24,7 +24,7 @@ namespace AML.Server.Repositories
             return null;
         }
 
-        public Task<AccountModel> GetAccount(string email, string password)
+        public Task<Account> GetAccount(string email, string password)
         {
             // add logic
             return null;

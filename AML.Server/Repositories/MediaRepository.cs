@@ -12,7 +12,7 @@ namespace AML.Server.Repositories
             /*Assign injected context to declared above*/
         }
 
-        public async Task<List<MediaModel>> SearchMedia(string searchTerm)
+        public async Task<List<Media>> SearchMedia(string searchTerm)
         {
             // add logic
             return null;

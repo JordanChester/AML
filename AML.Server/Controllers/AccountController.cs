@@ -32,7 +32,7 @@ namespace AML.Server.Controllers
         }
 
         [HttpGet]
-        public async Task<AccountModel> GetAccount(string email, string password)
+        public async Task<Account> GetAccount(string email, string password)
         {
             // Logic going to repo & return Account
             return null;

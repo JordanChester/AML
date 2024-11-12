@@ -16,10 +16,10 @@ namespace AML.Server.Controllers
         }
 
         [HttpGet]
-        public async Task<List<MediaModel>> SearchMedia(/*Request Object*/)
+        public async Task<List<Media>> SearchMedia(/*Request Object*/)
         {
             // Logic going to repo & return results
-            List<MediaModel> results = new List<MediaModel>();
+            List<Media> results = new List<Media>();
             return results;
         }
     }
