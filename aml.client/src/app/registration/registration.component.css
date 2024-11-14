@@ -1,0 +1,14 @@
+.title-text {
+  text-align: center;
+  margin: auto;
+  width: 80%;
+  padding: 50px;
+  font-size: 3rem;
+}
+
+.registration-form {
+  display: inline-block;
+  align-items: center;
+  width: 60%;
+  padding: 10px 50px;
+}
