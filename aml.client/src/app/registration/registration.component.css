@@ -2,13 +2,13 @@
   text-align: center;
   margin: auto;
   width: 80%;
-  padding: 50px;
+  padding: 20px;
   font-size: 3rem;
 }
 
 .registration-form {
   display: inline-block;
   align-items: center;
-  width: 60%;
+  width: 40%;
   padding: 10px 50px;
 }
