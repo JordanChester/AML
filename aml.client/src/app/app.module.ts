@@ -12,12 +12,15 @@ import { RegistrationComponent } from './registration/registration.component';
 import { AccountComponent } from './account/account.component';
 
 import { httpInterceptorProviders } from './_helpers/http.interceptor';
+import { LibraryComponent } from './library/library.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     NavbarComponent,
+    HomeComponent,
+    LibraryComponent,
     HomeComponent,
     RegistrationComponent,
     AccountComponent,
