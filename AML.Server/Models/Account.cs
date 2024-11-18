@@ -8,17 +8,17 @@ namespace AML.Server.Models
         [Key]
         public int AccountId { get; set; }
         [Required]
-        private string Email { get; set; }
+        public string Email { get; set; }
         [Required]
-        private string Password { get; set; }
+        public string Password { get; set; }
         [Required]
-        private bool Subscribed { get; set; }
+        public bool Subscribed { get; set; }
         [Required]
-        private string Name { get; set; }
+        public string Name { get; set; }
         [Required]
-        private string Address { get; set; }
+        public string Address { get; set; }
         [Required]
-        private string PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
         [Required]
         public AccountType AccountType { get; set; }
         [ForeignKey(nameof(Branch.BranchId))]
