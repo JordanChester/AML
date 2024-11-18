@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 
 @Component({
@@ -10,7 +10,7 @@ export class RegistrationComponent {
   form: any = {
     email: null,
     password: null,
-    accountType: null,
+    accountType: 1,
     name: null,
     address: null,
     phone: null

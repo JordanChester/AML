@@ -16,6 +16,7 @@ namespace AML.Server.Controllers
         }
 
         [HttpGet]
+        [Route("search-media")]
         public async Task<List<Media>> SearchMedia(/*Request Object*/)
         {
             // Logic going to repo & return results

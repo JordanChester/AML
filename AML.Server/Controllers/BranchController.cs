@@ -15,17 +15,23 @@ namespace AML.Server.Controllers
             _branchRepository = branchRepository;
         }
 
+        [HttpPost]
+        [Route("create-branch")]
         public async Task CreateBranch(Branch newBranch)
         {
             // add logic
         }
 
+        [HttpGet]
+        [Route("get-branch")]
         public async Task<Branch> GetBranch(int branchId)
         {
             // add logic
             return null;
         }
 
+        [HttpGet]
+        [Route("get-location")]
         public async Task<string> GetBranchLocation(int branchId)
         {
             // add logic
