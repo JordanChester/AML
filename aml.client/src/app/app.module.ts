@@ -8,6 +8,9 @@ import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { LibraryComponent } from './library/library.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import {MatPaginator} from "@angular/material/paginator";
+import { MediaComponent } from './media/media.component';
 
 @NgModule({
   declarations: [
@@ -15,14 +18,18 @@ import { LibraryComponent } from './library/library.component';
     LoginComponent,
     NavbarComponent,
     HomeComponent,
-    LibraryComponent
+    LibraryComponent,
+    MediaComponent
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        AppRoutingModule,
+        MatPaginator
+    ],
+  providers: [
+    provideAnimationsAsync()
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
