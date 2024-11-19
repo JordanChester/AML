@@ -71,7 +71,7 @@ export class AuthService {
     }
 
     return this.http.post(
-      AUTH_API + 'update-details',
+      AUTH_API + 'change-password',
       request,
       httpOptions
     );

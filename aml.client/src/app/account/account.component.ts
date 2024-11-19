@@ -20,6 +20,7 @@ export class AccountComponent implements OnInit {
   currentUser: any;
   editMode: boolean = false;
   changePassword: boolean = false;
+  changeSuccess: boolean = false;
   errorMessage = '';
 
   constructor(private storageService: StorageService, private authService: AuthService) { }
@@ -30,10 +31,12 @@ export class AccountComponent implements OnInit {
 
   editClicked(): void {
     this.editMode = !this.editMode;
+    this.changePassword = false;
   }
 
   changePassClicked(): void {
     this.changePassword = !this.changePassword;
+    this.editMode = false;
   }
 
   updateDetails(): void {
@@ -58,7 +61,7 @@ export class AccountComponent implements OnInit {
     this.authService.changePassword(email, oldpassword, newpassword).subscribe({
       next: data => {
         this.storageService.saveUser(data);
-        window.location.reload();
+        this.changeSuccess = true;
       },
       error: err => {
         this.errorMessage = err.error.message;

@@ -18,17 +18,11 @@
                required
                email
                #email="ngModel"
-               [ngClass]="{ 'is-invalid': f.submitted && email.errors }" />
-        @if (email.errors && f.submitted) {
-        <div class="invalid-feedback">
-          @if (email.errors['required']) {
-          <div>Email is required</div>
-          }
-          @if (email.errors['email']) {
-          <div>Email must be a valid email address</div>
-          }
+               [ngClass]="{ 'is-invalid': (email.dirty || email.touched) && email.errors }" />
+        <div class="invalid-feedback" *ngIf="email && (email.dirty || email.touched)">
+          <div *ngIf="email.errors?.['required']">Email is required</div>
+          <div *ngIf="email.errors?.['email']">Email must be a valid email address</div>
         </div>
-        }
       </div>
       <div class="form-group">
         <label for="password">Password</label>
@@ -39,17 +33,11 @@
                required
                minlength="6"
                #password="ngModel"
-               [ngClass]="{ 'is-invalid': f.submitted && password.errors }" />
-        @if (password.errors && f.submitted) {
-        <div class="invalid-feedback">
-          @if (password.errors['required']) {
-          <div>Password is required</div>
-          }
-          @if (password.errors['minlength']) {
-          <div>Password must be at least 6 characters</div>
-          }
+               [ngClass]="{ 'is-invalid': (password.dirty || password.touched) && password.errors }" />
+        <div class="invalid-feedback" *ngIf="password && (password.dirty || password.touched)">
+          <div *ngIf="password.errors?.['required']">Password is required</div>
+          <div *ngIf="password.errors?.['minlength']">Password must be at least 6 characters</div>
         </div>
-        }
       </div>
       <div class="form-group">
         <label for="name">Name</label>
@@ -61,20 +49,12 @@
                minlength="1"
                maxlength="30"
                #name="ngModel"
-               [ngClass]="{ 'is-invalid': f.submitted && name.errors }" />
-        @if (name.errors && f.submitted) {
-        <div class="invalid-feedback">
-          @if (name.errors['required']) {
-          <div>Name is required</div>
-          }
-          @if (name.errors['minlength']) {
-          <div>Name is required</div>
-          }
-          @if (name.errors['maxlength']) {
-          <div>Name must be at most 30 characters</div>
-          }
+               [ngClass]="{ 'is-invalid': (name.dirty || name.touched) && name.errors }" />
+        <div class="invalid-feedback" *ngIf="name && (name.dirty || name.touched)">
+          <div *ngIf="name.errors?.['required']">Name is required</div>
+          <div *ngIf="name.errors?.['minlength']">Name is required</div>
+          <div *ngIf="name.errors?.['maxlength']">Name must be at most 30 characters</div>
         </div>
-        }
       </div>
       <div class="form-group">
         <label for="address">Address</label>
@@ -86,20 +66,12 @@
                minlength="1"
                maxlength="75"
                #address="ngModel"
-               [ngClass]="{ 'is-invalid': f.submitted && address.errors }" />
-        @if (address.errors && f.submitted) {
-        <div class="invalid-feedback">
-          @if (address.errors['required']) {
-          <div>Address is required</div>
-          }
-          @if (address.errors['minlength']) {
-          <div>Address is required</div>
-          }
-          @if (address.errors['maxlength']) {
-          <div>Address must be at most 75 characters</div>
-          }
+               [ngClass]="{ 'is-invalid': (address.dirty || address.touched) && address.errors }" />
+        <div class="invalid-feedback" *ngIf="address && (address.dirty || address.touched)">
+          <div *ngIf="address.errors?.['required']">Address is required</div>
+          <div *ngIf="address.errors?.['minlength']">Address is required</div>
+          <div *ngIf="address.errors?.['maxlength']">Address must be at most 75 characters</div>
         </div>
-        }
       </div>
       <div class="form-group">
         <label for="phone">Phone Number</label>
@@ -110,20 +82,12 @@
                required
                pattern="[0]{1}[7]{1}[0-9]{9}"
                #phone="ngModel"
-               [ngClass]="{ 'is-invalid': f.submitted && phone.errors }" />
-        @if (phone.errors && f.submitted) {
-        <div class="invalid-feedback">
-          @if (phone.errors['required']) {
-          <div>Phone Number is required</div>
-          }
-          @if (phone.errors['tel']) {
-          <div>Valid UK Mobile Number is required</div>
-          }
-          @if (phone.errors['pattern']) {
-          <div>Valid UK Mobile Number is required (No spaces)</div>
-          }
+               [ngClass]="{ 'is-invalid': (phone.dirty || phone.touched) && phone.errors }" />
+        <div class="invalid-feedback" *ngIf="phone && (phone.dirty || phone.touched)">
+          <div *ngIf="phone.errors?.['required']">Phone Number is required</div>
+          <div *ngIf="phone.errors?.['tel']">Valid UK Mobile Number is required</div>
+          <div *ngIf="phone.errors?.['pattern']">Valid UK Mobile Number is required (No spaces)</div>
         </div>
-        }
       </div>
       <div class="form-group">
         <button class="btn btn-primary btn-block">Register</button>

@@ -72,13 +72,9 @@ namespace AML.Server.Controllers
 
         [HttpPost]
         [Route("change-password")]
-        public async Task<bool> ChangePassword(ChangePasswordRequest request)
+        public async Task<Account> ChangePassword(ChangePasswordRequest request)
         {
-            bool success = true;
-
-
-
-            return success;
+            return await _accountRepository.ChangePassword(request.Email, request.OldPassword, request.NewPassword);
         }
 
         [HttpPost]

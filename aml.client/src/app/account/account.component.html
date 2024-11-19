@@ -40,6 +40,7 @@
       </div>
       <div class="form-group">
         <button class="submit btn btn-success btn-block" type="button" (click)="updateDetails()">Submit Changes</button>
+        <button class="submit btn btn-success btn-block" type="button" (click)="editClicked()">Cancel</button>
       </div>
     </form>
   </div>
@@ -102,6 +103,7 @@
       </div>
       <div class="form-group">
         <button class="submit btn btn-success btn-block" type="button" (click)="updatePassword()">Confirm</button>
+        <div class="alert alert-success" *ngIf="changeSuccess">Password changed successfully.</div>
       </div>
     </form>
   </div>
