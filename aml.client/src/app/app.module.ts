@@ -13,6 +13,9 @@ import { AccountComponent } from './account/account.component';
 
 import { httpInterceptorProviders } from './_helpers/http.interceptor';
 import { LibraryComponent } from './library/library.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import {MatPaginator} from "@angular/material/paginator";
+import { MediaComponent } from './media/media.component';
 
 @NgModule({
   declarations: [
@@ -21,17 +24,26 @@ import { LibraryComponent } from './library/library.component';
     NavbarComponent,
     HomeComponent,
     LibraryComponent,
+    MediaComponent,
+    LibraryComponent,
     HomeComponent,
     RegistrationComponent,
     AccountComponent,
   ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        AppRoutingModule,
+        MatPaginator
+    ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     FormsModule
   ],
-  providers: [httpInterceptorProviders],
+  providers: [httpInterceptorProviders,
+    provideAnimationsAsync()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
