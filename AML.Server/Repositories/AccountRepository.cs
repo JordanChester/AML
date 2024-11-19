@@ -52,22 +52,25 @@ namespace AML.Server.Repositories
             return account;
         }
 
-        public Task<Account> GetAccount(string email, string password)
+        public async Task<Account> UpdateDetails(string email, string updatedAddress, string updatedPhone)
         {
-            // add logic
-            return null;
-        }
+            var account = await dbContext.Accounts.FirstOrDefaultAsync(x => x.Email == email);
+            if (account != null)
+            {
+                if (updatedAddress != "")
+                {
+                    account.Address = updatedAddress;
+                }
 
-        public Task UpdatePhoneNumber(string newPhoneNumber)
-        {
-            // add logic
-            return null;
-        }
+                if(updatedPhone != "")
+                {
+                    account.Phone = updatedPhone;
+                }
 
-        public Task UpdateAddress(string newAddress)
-        {
-            // add logic
-            return null;
+                await dbContext.SaveChangesAsync();
+            }
+
+            return account;
         }
 
         public Task ChangePassword(string newPassword)

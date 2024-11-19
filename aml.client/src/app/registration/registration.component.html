@@ -108,7 +108,7 @@
                name="phone"
                [(ngModel)]="form.phone"
                required
-               pattern="[0-9]{11}"
+               pattern="[0]{1}[7]{1}[0-9]{9}"
                #phone="ngModel"
                [ngClass]="{ 'is-invalid': f.submitted && phone.errors }" />
         @if (phone.errors && f.submitted) {
@@ -117,10 +117,10 @@
           <div>Phone Number is required</div>
           }
           @if (phone.errors['tel']) {
-          <div>Valid UK Phone Number is required</div>
+          <div>Valid UK Mobile Number is required</div>
           }
           @if (phone.errors['pattern']) {
-          <div>Valid UK Phone Number is required (No spaces)</div>
+          <div>Valid UK Mobile Number is required (No spaces)</div>
           }
         </div>
         }
