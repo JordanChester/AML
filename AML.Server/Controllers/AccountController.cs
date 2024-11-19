@@ -1,4 +1,7 @@
-﻿using AML.Server.Interfaces;
+﻿using AML.Server.Data;
+using AML.Server.DTOs;
+using AML.Server.Helpers;
+using AML.Server.Interfaces;
 using AML.Server.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,29 +12,54 @@ namespace AML.Server.Controllers
     public class AccountController : ControllerBase
     {
         private readonly IAccountRepository _accountRepository;
+        private readonly string _pepper;
+        private readonly int _iteration = 3;
 
         public AccountController(IAccountRepository accountRepository)
         {
             this._accountRepository = accountRepository;
+            this._pepper = Environment.GetEnvironmentVariable("PasswordHashPepper");
         }
 
-        [HttpGet]
-        public async Task<bool> RegisterAccount(/*Request Object*/)
+        [HttpPost]
+        [Route("register-account")]
+        public async Task<bool> RegisterAccount(RegisterRequest request, CancellationToken cancellationToken)
         {
-            // Logic going to repo & return success response
-            bool success = true;
+            bool success = false;
+            string salt = PasswordHasher.GenerateSalt();
+
+            Account newAccount = new Account(){
+                Email = request.Email,
+                PasswordSalt = salt,
+                Password = PasswordHasher.ComputeHash(request.Password, salt, _pepper, _iteration),
+                Subscribed = true,
+                Name = request.Name,
+                Address = request.Address,
+                PhoneNumber = request.Phone,
+                AccountType = request.AccountType
+            };
+
+            success = await _accountRepository.RegisterAccount(newAccount, cancellationToken);
+
             return success;
         }
 
-        [HttpGet]
-        public async Task<bool> VerifyLogin(string email, string password)
+        [HttpPost]
+        [Route("verify-login")]
+        public async Task<LoginResponse> VerifyLogin(LoginRequest request, CancellationToken cancellationToken)
         {
-            // Logic going to repo & return bool response
-            bool verified = true;
-            return verified;
+            Account account = await _accountRepository.VerifyLogin(request.Email, request.Password, cancellationToken);
+            LoginResponse response = new LoginResponse();
+            response.Email = account.Email;
+            response.Name = account.Name;
+            response.Address = account.Address;
+            response.Phone = account.PhoneNumber;
+
+            return response;
         }
 
         [HttpGet]
+        [Route("get-account")]
         public async Task<Account> GetAccount(string email, string password)
         {
             // Logic going to repo & return Account
@@ -39,6 +67,7 @@ namespace AML.Server.Controllers
         }
 
         [HttpPost]
+        [Route("update-phone")]
         public async Task<bool> UpdatePhoneNumber(string newPhoneNumber)
         {
             // Logic going to repo & return success response
@@ -47,6 +76,7 @@ namespace AML.Server.Controllers
         }
 
         [HttpPost]
+        [Route("update-address")]
         public async Task<bool> UpdateAddress(string newAddress)
         {
             // Logic going to repo & return success response
@@ -55,6 +85,7 @@ namespace AML.Server.Controllers
         }
 
         [HttpPost]
+        [Route("change-password")]
         public async Task<bool> ChangePassword(string newPassword)
         {
             // Logic going to repo & return success response
@@ -63,6 +94,7 @@ namespace AML.Server.Controllers
         }
 
         [HttpPost]
+        [Route("subscribe")]
         public async Task<bool> Subscribe(int accountId)
         {
             // Logic going to repo & return success response
@@ -71,6 +103,7 @@ namespace AML.Server.Controllers
         }
 
         [HttpPost]
+        [Route("unsubscribe")]
         public async Task<bool> Unsubscribe(int accountId)
         {
             // Logic going to repo & return success response

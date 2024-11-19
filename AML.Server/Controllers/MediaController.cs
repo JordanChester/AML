@@ -1,5 +1,4 @@
-﻿using AML.Server.Business.Media;
-using AML.Server.Interfaces;
+﻿using AML.Server.Interfaces;
 using AML.Server.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,19 +9,18 @@ namespace AML.Server.Controllers
     public class MediaController : ControllerBase
     {
         private readonly IMediaRepository _mediaRepository;
-        private readonly ISearchMediaGetter _searchMediaGetter;
 
-        public MediaController(IMediaRepository mediaRepository,
-            ISearchMediaGetter searchMediaGetter)
+        public MediaController(IMediaRepository mediaRepository)
         {
             this._mediaRepository = mediaRepository;
-            this._searchMediaGetter = searchMediaGetter;
         }
 
         [HttpGet]
-        public async Task<List<Media>> SearchMedia(SearchMediaRequest? request)
+        [Route("search-media")]
+        public async Task<List<Media>> SearchMedia(/*Request Object*/)
         {
-            var results = await this._searchMediaGetter.Get(request);
+            // Logic going to repo & return results
+            List<Media> results = new List<Media>();
             return results;
         }
     }
