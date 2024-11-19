@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AccountType } from '../_classes/AccountType';
 import { RegisterRequest } from '../_DTOs/RegisterRequest';
+import { LoginRequest } from '../_DTOs/LoginRequest';
 
 const AUTH_API = 'https://localhost:7033/api/account/';
 
@@ -17,12 +18,14 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   login(email: string, password: string): Observable<any> {
+    const request: LoginRequest = {
+      email: email,
+      password: password
+    }
+
     return this.http.post(
       AUTH_API + 'verify-login',
-      {
-        email,
-        password,
-      },
+      request,
       httpOptions
     );
   }

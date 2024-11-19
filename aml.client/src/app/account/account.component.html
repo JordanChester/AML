@@ -13,12 +13,6 @@
       <strong>Email:</strong>
       {{ currentUser.email }}
     </p>
-    <strong>Roles:</strong>
-    <ul>
-      @for (role of currentUser.roles; track role) {
-      <li>{{ role }}</li>
-      }
-    </ul>
     <p>
       <strong>Address:</strong>
       {{ currentUser.address }}

@@ -20,7 +20,7 @@ import { httpInterceptorProviders } from './_helpers/http.interceptor';
     NavbarComponent,
     HomeComponent,
     RegistrationComponent,
-    AccountComponent
+    AccountComponent,
   ],
   imports: [
     BrowserModule,
