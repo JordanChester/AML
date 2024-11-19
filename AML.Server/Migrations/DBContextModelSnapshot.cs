@@ -24,30 +24,57 @@ namespace AML.Server.Migrations
 
             modelBuilder.Entity("AML.Server.Models.Account", b =>
                 {
-                    b.Property<int>("AccountId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AccountId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("AccountType")
                         .HasColumnType("int");
 
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int?>("BranchId")
                         .HasColumnType("int");
 
-                    b.HasKey("AccountId");
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PasswordSalt")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Subscribed")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
 
                     b.ToTable("Accounts");
                 });
 
             modelBuilder.Entity("AML.Server.Models.Branch", b =>
                 {
-                    b.Property<int>("BranchId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BranchId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Location")
                         .IsRequired()
@@ -57,18 +84,18 @@ namespace AML.Server.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("BranchId");
+                    b.HasKey("Id");
 
                     b.ToTable("Branches");
                 });
 
             modelBuilder.Entity("AML.Server.Models.Media", b =>
                 {
-                    b.Property<int>("MediaId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MediaId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<bool>("Available")
                         .HasColumnType("bit");
@@ -87,18 +114,18 @@ namespace AML.Server.Migrations
                     b.Property<float>("Price")
                         .HasColumnType("real");
 
-                    b.HasKey("MediaId");
+                    b.HasKey("Id");
 
                     b.ToTable("Media");
                 });
 
             modelBuilder.Entity("AML.Server.Models.MediaStock", b =>
                 {
-                    b.Property<int>("MediaStockId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MediaStockId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("AvailableStock")
                         .HasColumnType("int");
@@ -109,18 +136,18 @@ namespace AML.Server.Migrations
                     b.Property<int>("MediaId")
                         .HasColumnType("int");
 
-                    b.HasKey("MediaStockId");
+                    b.HasKey("Id");
 
                     b.ToTable("MediaStock");
                 });
 
             modelBuilder.Entity("AML.Server.Models.Order", b =>
                 {
-                    b.Property<int>("OrderId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("AccountId")
                         .HasColumnType("int");
@@ -137,7 +164,7 @@ namespace AML.Server.Migrations
                     b.Property<DateTime>("ReturnDate")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("OrderId");
+                    b.HasKey("Id");
 
                     b.ToTable("Orders");
                 });

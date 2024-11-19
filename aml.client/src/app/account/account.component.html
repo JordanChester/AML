@@ -1,0 +1,29 @@
+<app-navbar></app-navbar>
+<div class="font-weight-bold">
+  <h3 class="title-text">Account</h3>
+</div>
+@if (currentUser) {
+<div class="content account-container">
+  <div>
+    <p>
+      <strong>Name:</strong>
+      {{ currentUser.name }}
+    </p>
+    <p>
+      <strong>Email:</strong>
+      {{ currentUser.email }}
+    </p>
+    <p>
+      <strong>Address:</strong>
+      {{ currentUser.address }}
+    </p>
+    <p>
+      <strong>Phone No:</strong>
+      {{ currentUser.phone }}
+    </p>
+  </div>
+  
+</div>
+} @else {
+<p>Please login.</p>
+}

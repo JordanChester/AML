@@ -1,0 +1,142 @@
+<app-navbar></app-navbar>
+<div class="font-weight-bold">
+  <h3 class="title-text">Registration</h3>
+</div>
+<div class="content col-md-12">
+  <div class="registration-form">
+    @if (!isSuccessful) {
+    <form name="form"
+          (ngSubmit)="f.form.valid && onSubmit()"
+          #f="ngForm"
+          novalidate>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email"
+               class="form-control"
+               name="email"
+               [(ngModel)]="form.email"
+               required
+               email
+               #email="ngModel"
+               [ngClass]="{ 'is-invalid': f.submitted && email.errors }" />
+        @if (email.errors && f.submitted) {
+        <div class="invalid-feedback">
+          @if (email.errors['required']) {
+          <div>Email is required</div>
+          }
+          @if (email.errors['email']) {
+          <div>Email must be a valid email address</div>
+          }
+        </div>
+        }
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password"
+               class="form-control"
+               name="password"
+               [(ngModel)]="form.password"
+               required
+               minlength="6"
+               #password="ngModel"
+               [ngClass]="{ 'is-invalid': f.submitted && password.errors }" />
+        @if (password.errors && f.submitted) {
+        <div class="invalid-feedback">
+          @if (password.errors['required']) {
+          <div>Password is required</div>
+          }
+          @if (password.errors['minlength']) {
+          <div>Password must be at least 6 characters</div>
+          }
+        </div>
+        }
+      </div>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text"
+               class="form-control"
+               name="name"
+               [(ngModel)]="form.name"
+               required
+               minlength="1"
+               maxlength="30"
+               #name="ngModel"
+               [ngClass]="{ 'is-invalid': f.submitted && name.errors }" />
+        @if (name.errors && f.submitted) {
+        <div class="invalid-feedback">
+          @if (name.errors['required']) {
+          <div>Name is required</div>
+          }
+          @if (name.errors['minlength']) {
+          <div>Name is required</div>
+          }
+          @if (name.errors['maxlength']) {
+          <div>Name must be at most 30 characters</div>
+          }
+        </div>
+        }
+      </div>
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input type="text"
+               class="form-control"
+               name="address"
+               [(ngModel)]="form.address"
+               required
+               minlength="1"
+               maxlength="75"
+               #address="ngModel"
+               [ngClass]="{ 'is-invalid': f.submitted && address.errors }" />
+        @if (address.errors && f.submitted) {
+        <div class="invalid-feedback">
+          @if (address.errors['required']) {
+          <div>Address is required</div>
+          }
+          @if (address.errors['minlength']) {
+          <div>Address is required</div>
+          }
+          @if (address.errors['maxlength']) {
+          <div>Address must be at most 75 characters</div>
+          }
+        </div>
+        }
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel"
+               class="form-control"
+               name="phone"
+               [(ngModel)]="form.phone"
+               required
+               pattern="[0-9]{11}"
+               #phone="ngModel"
+               [ngClass]="{ 'is-invalid': f.submitted && phone.errors }" />
+        @if (phone.errors && f.submitted) {
+        <div class="invalid-feedback">
+          @if (phone.errors['required']) {
+          <div>Phone Number is required</div>
+          }
+          @if (phone.errors['tel']) {
+          <div>Valid UK Phone Number is required</div>
+          }
+          @if (phone.errors['pattern']) {
+          <div>Valid UK Phone Number is required (No spaces)</div>
+          }
+        </div>
+        }
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary btn-block">Register</button>
+      </div>
+
+      @if (f.submitted && isSignUpFailed) {
+      <div class="alert alert-warning">
+        Signup failed!<br />{{ errorMessage }}
+      </div>
+      }
+    </form>
+    } @else {
+    <div class="alert alert-success">Your registration is successful!</div>
+    }
+  </div>
+</div>

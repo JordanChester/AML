@@ -6,22 +6,25 @@ namespace AML.Server.Models
     public class Account
     {
         [Key]
-        public int AccountId { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
         [Required]
-        private string Email { get; set; }
+        public string Email { get; set; }
         [Required]
-        private string Password { get; set; }
+        public string Password { get; set; }
         [Required]
-        private bool Subscribed { get; set; }
+        public string PasswordSalt { get; set; }
         [Required]
-        private string Name { get; set; }
+        public bool Subscribed { get; set; }
         [Required]
-        private string Address { get; set; }
+        public string Name { get; set; }
         [Required]
-        private string PhoneNumber { get; set; }
+        public string Address { get; set; }
+        [Required]
+        public string PhoneNumber { get; set; }
         [Required]
         public AccountType AccountType { get; set; }
-        [ForeignKey(nameof(Branch.BranchId))]
+        [ForeignKey(nameof(Branch.Id))]
         public int? BranchId { get; set; }
     }
 }
