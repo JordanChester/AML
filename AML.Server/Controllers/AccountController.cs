@@ -35,7 +35,7 @@ namespace AML.Server.Controllers
                 Subscribed = true,
                 Name = request.Name,
                 Address = request.Address,
-                PhoneNumber = request.Phone,
+                Phone = request.Phone,
                 AccountType = request.AccountType
             };
 
@@ -53,44 +53,28 @@ namespace AML.Server.Controllers
             response.Email = account.Email;
             response.Name = account.Name;
             response.Address = account.Address;
-            response.Phone = account.PhoneNumber;
+            response.Phone = account.Phone;
 
             return response;
         }
 
-        [HttpGet]
-        [Route("get-account")]
-        public async Task<Account> GetAccount(string email, string password)
-        {
-            // Logic going to repo & return Account
-            return null;
-        }
-
         [HttpPost]
-        [Route("update-phone")]
-        public async Task<bool> UpdatePhoneNumber(string newPhoneNumber)
+        [Route("update-details")]
+        public async Task<Account> UpdateDetails(UpdateDetailsRequest request)
         {
-            // Logic going to repo & return success response
-            bool success = true;
-            return success;
-        }
+            string updatedAddress = request.Address == null ? "" : request.Address;
+            string updatedPhone = request.Phone == null ? "" : request.Phone;
 
-        [HttpPost]
-        [Route("update-address")]
-        public async Task<bool> UpdateAddress(string newAddress)
-        {
-            // Logic going to repo & return success response
-            bool success = true;
-            return success;
+            if (updatedAddress == "" && updatedPhone == "") throw new Exception("No valid data provided.");
+
+            return await _accountRepository.UpdateDetails(request.Email, updatedAddress, updatedPhone);
         }
 
         [HttpPost]
         [Route("change-password")]
-        public async Task<bool> ChangePassword(string newPassword)
+        public async Task<Account> ChangePassword(ChangePasswordRequest request)
         {
-            // Logic going to repo & return success response
-            bool success = true;
-            return success;
+            return await _accountRepository.ChangePassword(request.Email, request.OldPassword, request.NewPassword);
         }
 
         [HttpPost]

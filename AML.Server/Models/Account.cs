@@ -21,7 +21,7 @@ namespace AML.Server.Models
         [Required]
         public string Address { get; set; }
         [Required]
-        public string PhoneNumber { get; set; }
+        public string Phone { get; set; }
         [Required]
         public AccountType AccountType { get; set; }
         [ForeignKey(nameof(Branch.Id))]
