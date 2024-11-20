@@ -5,6 +5,7 @@ import { LibraryComponent } from './library/library.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { LoginComponent } from './login/login.component';
 import { AccountComponent } from './account/account.component';
+import {LibraryComponent} from "./library/library.component";
 
 const routes: Routes = [
   {

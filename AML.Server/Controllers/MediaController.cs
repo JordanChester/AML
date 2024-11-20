@@ -19,7 +19,8 @@ namespace AML.Server.Controllers
             this._searchMediaGetter = searchMediaGetter;
         }
 
-        [HttpGet]
+        [HttpPost]
+        [Route("search-media")]
         public async Task<List<Media>> SearchMedia(SearchMediaRequest? request)
         {
             var results = await this._searchMediaGetter.Get(request);

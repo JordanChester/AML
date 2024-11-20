@@ -12,6 +12,8 @@ import { RegistrationComponent } from './registration/registration.component';
 import { AccountComponent } from './account/account.component';
 
 import { httpInterceptorProviders } from './_helpers/http.interceptor';
+import {LibraryComponent} from "./library/library.component";
+import {MediaComponent} from "./media/media.component";
 import { LibraryComponent } from './library/library.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {MatPaginator} from "@angular/material/paginator";
@@ -23,12 +25,10 @@ import { MediaComponent } from './media/media.component';
     LoginComponent,
     NavbarComponent,
     HomeComponent,
-    LibraryComponent,
-    MediaComponent,
-    LibraryComponent,
-    HomeComponent,
     RegistrationComponent,
     AccountComponent,
+    LibraryComponent,
+    MediaComponent
   ],
     imports: [
         BrowserModule,
