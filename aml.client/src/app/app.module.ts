@@ -12,6 +12,8 @@ import { RegistrationComponent } from './registration/registration.component';
 import { AccountComponent } from './account/account.component';
 
 import { httpInterceptorProviders } from './_helpers/http.interceptor';
+import {LibraryComponent} from "./library/library.component";
+import {MediaComponent} from "./media/media.component";
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { httpInterceptorProviders } from './_helpers/http.interceptor';
     HomeComponent,
     RegistrationComponent,
     AccountComponent,
+    LibraryComponent,
+    MediaComponent
   ],
   imports: [
     BrowserModule,
