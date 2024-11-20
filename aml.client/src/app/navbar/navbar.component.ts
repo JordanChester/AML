@@ -24,4 +24,8 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['home']);
   }
 
+  search(text: string): void {
+    this.router.navigate(['/library', {search: text}])
+  }
+
 }

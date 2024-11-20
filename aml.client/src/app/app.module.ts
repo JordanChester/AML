@@ -12,6 +12,12 @@ import { RegistrationComponent } from './registration/registration.component';
 import { AccountComponent } from './account/account.component';
 
 import { httpInterceptorProviders } from './_helpers/http.interceptor';
+import {LibraryComponent} from "./library/library.component";
+import {MediaComponent} from "./media/media.component";
+import { LibraryComponent } from './library/library.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import {MatPaginator} from "@angular/material/paginator";
+import { MediaComponent } from './media/media.component';
 
 @NgModule({
   declarations: [
@@ -21,14 +27,23 @@ import { httpInterceptorProviders } from './_helpers/http.interceptor';
     HomeComponent,
     RegistrationComponent,
     AccountComponent,
+    LibraryComponent,
+    MediaComponent
   ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        AppRoutingModule,
+        MatPaginator
+    ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     FormsModule
   ],
-  providers: [httpInterceptorProviders],
+  providers: [httpInterceptorProviders,
+    provideAnimationsAsync()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
