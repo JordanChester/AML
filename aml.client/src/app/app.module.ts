@@ -12,11 +12,9 @@ import { RegistrationComponent } from './registration/registration.component';
 import { AccountComponent } from './account/account.component';
 
 import { httpInterceptorProviders } from './_helpers/http.interceptor';
-import {LibraryComponent} from "./library/library.component";
-import {MediaComponent} from "./media/media.component";
 import { LibraryComponent } from './library/library.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import {MatPaginator} from "@angular/material/paginator";
+import { MatPaginator } from "@angular/material/paginator";
 import { MediaComponent } from './media/media.component';
 
 @NgModule({
@@ -30,17 +28,12 @@ import { MediaComponent } from './media/media.component';
     LibraryComponent,
     MediaComponent
   ],
-    imports: [
-        BrowserModule,
-        HttpClientModule,
-        AppRoutingModule,
-        MatPaginator
-    ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    MatPaginator
   ],
   providers: [httpInterceptorProviders,
     provideAnimationsAsync()],
