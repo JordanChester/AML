@@ -2,7 +2,7 @@
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
 import {MediaSearchRequest} from "../_DTOs/MediaSearchRequest";
-import {Media} from "../Models/Media";
+import {Media} from "../_models/Media";
 
 const MEDIA_API = 'https://localhost:7033/api/media/';
 
