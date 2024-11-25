@@ -1,0 +1,20 @@
+button {
+  margin: auto;
+  margin-bottom: 10px !important;
+  padding: 10px 24px;
+  cursor: pointer;
+  width: 10%;
+  display: block;
+}
+
+.editable, .change-password {
+  display: inline-block;
+  align-items: center;
+  width: 40%;
+  padding: 10px 50px;
+}
+
+.submit {
+  width: 30%;
+}
+

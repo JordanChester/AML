@@ -1,0 +1,11 @@
+<app-navbar></app-navbar>
+
+<!--<mat-paginator [pageSize]="20"-->
+<!--               [pageSizeOptions]="[5, 10, 25, 100]"-->
+<!--               aria-label="Select page">-->
+  <div>
+    @for (media of mediaList; track media){
+      <app-media [media]="media"></app-media>
+    }
+  </div>
+<!--</mat-paginator>-->

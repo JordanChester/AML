@@ -2,9 +2,8 @@
 using AML.Server.Helpers;
 using AML.Server.Interfaces;
 using AML.Server.Models;
+using Azure.Core;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Diagnostics;
-using System;
 
 namespace AML.Server.Repositories
 {
@@ -52,28 +51,40 @@ namespace AML.Server.Repositories
             return account;
         }
 
-        public Task<Account> GetAccount(string email, string password)
+        public async Task<Account> UpdateDetails(string email, string updatedAddress, string updatedPhone)
         {
-            // add logic
-            return null;
+            var account = await dbContext.Accounts.FirstOrDefaultAsync(x => x.Email == email);
+            if (account != null)
+            {
+                if (updatedAddress != "")
+                {
+                    account.Address = updatedAddress;
+                }
+
+                if(updatedPhone != "")
+                {
+                    account.Phone = updatedPhone;
+                }
+
+                await dbContext.SaveChangesAsync();
+            }
+
+            return account;
         }
 
-        public Task UpdatePhoneNumber(string newPhoneNumber)
+        public async Task<Account> ChangePassword(string email, string oldPassword, string newPassword)
         {
-            // add logic
-            return null;
-        }
+            var account = await dbContext.Accounts.FirstOrDefaultAsync(x => x.Email == email);
+            if (account != null)
+            {
+                string oldHash = PasswordHasher.ComputeHash(oldPassword, account.PasswordSalt, _pepper, _iteration);
+                if (account.Password != oldHash) { throw new Exception("Old password does not match our records."); }
 
-        public Task UpdateAddress(string newAddress)
-        {
-            // add logic
-            return null;
-        }
+                account.Password = PasswordHasher.ComputeHash(newPassword, account.PasswordSalt, _pepper, _iteration);
+                await dbContext.SaveChangesAsync();
+            }
 
-        public Task ChangePassword(string newPassword)
-        {
-            // add logic
-            return null;
+            return account;
         }
 
         public Task Subscribe(int accountId)
