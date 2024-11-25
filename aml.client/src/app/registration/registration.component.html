@@ -91,15 +91,20 @@
       </div>
       <div class="form-group">
         <label for="branch">Branch</label>
-        <select class="form-control"
+        <select class="form-select"
                 name="branch"
                 [(ngModel)]="form.branch"
-                #branch="ngModel">
+                required
+                #branch="ngModel"
+                [ngClass]="{ 'is-invalid': (branch.dirty || branch.touched) && branch.errors }">
           <option *ngFor="let branch of branches"
                   [ngValue]="branch">
             {{ branch.name }}
           </option>
         </select>
+        <div class="invalid-feedback" *ngIf="branch && (branch.dirty || branch.touched)">
+          <div *ngIf="branch.errors?.['required']">Branch is required</div>
+        </div>
       </div>
       <div class="form-group">
         <button class="btn btn-primary btn-block">Register</button>

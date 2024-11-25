@@ -25,6 +25,6 @@ namespace AML.Server.Models
         [Required]
         public AccountType AccountType { get; set; }
         [ForeignKey(nameof(Branch.Id))]
-        public int? BranchId { get; set; }
+        public int BranchId { get; set; }
     }
 }

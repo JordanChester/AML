@@ -55,6 +55,7 @@ namespace AML.Server.Controllers
             response.Name = account.Name;
             response.Address = account.Address;
             response.Phone = account.Phone;
+            response.BranchId = account.BranchId;
 
             return response;
         }

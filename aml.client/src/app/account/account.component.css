@@ -7,7 +7,7 @@ button {
   display: block;
 }
 
-.editable, .change-password {
+.editable, .change-password, .change-branch {
   display: inline-block;
   align-items: center;
   width: 40%;
@@ -16,5 +16,9 @@ button {
 
 .submit {
   width: 30%;
+}
+
+.alert {
+  margin-top: 15px;
 }
 
