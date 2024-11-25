@@ -27,7 +27,7 @@
       <div class="form-group">
         <label for="password">Password</label>
         <input type="password"
-               class="form-control"
+               class="password form-control"
                name="password"
                [(ngModel)]="form.password"
                required
@@ -36,7 +36,7 @@
                [ngClass]="{ 'is-invalid': (password.dirty || password.touched) && password.errors }" />
         <div class="invalid-feedback" *ngIf="password && (password.dirty || password.touched)">
           <div *ngIf="password.errors?.['required']">Password is required</div>
-          <div *ngIf="password.errors?.['minlength']">Password must be at least 6 characters</div>
+          <div class="pass-length" *ngIf="password.errors?.['minlength']">Password must be at least 6 characters</div>
         </div>
       </div>
       <div class="form-group">
@@ -111,7 +111,7 @@
       </div>
 
       @if (f.submitted && isSignUpFailed) {
-      <div class="alert alert-warning">
+      <div class="failed alert alert-warning">
         Signup failed!<br />{{ errorMessage }}
       </div>
       }
