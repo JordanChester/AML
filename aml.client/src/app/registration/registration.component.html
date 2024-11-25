@@ -90,6 +90,18 @@
         </div>
       </div>
       <div class="form-group">
+        <label for="branch">Branch</label>
+        <select class="form-control"
+                name="branch"
+                [(ngModel)]="form.branch"
+                #branch="ngModel">
+          <option *ngFor="let branch of branches"
+                  [ngValue]="branch">
+            {{ branch.name }}
+          </option>
+        </select>
+      </div>
+      <div class="form-group">
         <button class="btn btn-primary btn-block">Register</button>
       </div>
 

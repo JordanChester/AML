@@ -1,5 +1,5 @@
 import {Component, Input, input, OnInit} from '@angular/core';
-import {Media} from "../Models/Media";
+import {Media} from "../_models/Media";
 import {MediaService} from "../_services/media.service";
 import {StorageService} from "../_services/storage.service";
 import {ActivatedRoute} from "@angular/router";

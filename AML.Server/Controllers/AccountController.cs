@@ -36,7 +36,8 @@ namespace AML.Server.Controllers
                 Name = request.Name,
                 Address = request.Address,
                 Phone = request.Phone,
-                AccountType = request.AccountType
+                AccountType = request.AccountType,
+                BranchId = request.Branch.Id
             };
 
             success = await _accountRepository.RegisterAccount(newAccount, cancellationToken);

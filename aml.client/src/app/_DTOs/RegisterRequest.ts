@@ -1,4 +1,5 @@
 import { AccountType } from "../_classes/AccountType";
+import { Branch } from "../_models/Branch";
 
 export class RegisterRequest {
   public email: string | undefined;
@@ -7,4 +8,5 @@ export class RegisterRequest {
   public name: string | undefined;
   public address: string | undefined;
   public phone: string | undefined;
+  public branch: Branch | undefined;
 }

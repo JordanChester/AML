@@ -6,6 +6,7 @@ import { RegisterRequest } from '../_DTOs/RegisterRequest';
 import { LoginRequest } from '../_DTOs/LoginRequest';
 import { UpdateDetailsRequest } from '../_DTOs/UpdateDetailsRequest';
 import { ChangePasswordRequest } from '../_DTOs/ChangePasswordRequest';
+import { Branch } from '../_models/Branch';
 
 const AUTH_API = 'https://localhost:7033/api/account/';
 
@@ -32,14 +33,15 @@ export class AuthService {
     );
   }
 
-  register(email: string, password: string, accountType: AccountType, name: string, address: string, phone: string): Observable<any> {
+  register(email: string, password: string, accountType: AccountType, name: string, address: string, phone: string, branch: Branch): Observable<any> {
     const request: RegisterRequest = {
       email: email,
       password: password,
       accountType: accountType,
       name: name,
       address: address,
-      phone: phone
+      phone: phone,
+      branch: branch
     }
 
     return this.http.post(

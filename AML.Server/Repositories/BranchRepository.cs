@@ -1,32 +1,26 @@
-﻿using AML.Server.Interfaces;
+﻿using AML.Server.Data;
+using AML.Server.Interfaces;
 using AML.Server.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace AML.Server.Repositories
 {
     public class BranchRepository : IBranchRepository
     {
-        // Add a dbcontext here
+        private readonly DBContext dbContext;
 
-        public BranchRepository(/*inject dbcontext*/)
+        public BranchRepository(DBContext dbContext)
         {
-            /*Assign injected context to declared above*/
+            this.dbContext = dbContext;
         }
 
-        public async Task CreateBranch(Branch newBranch)
+        public async Task<List<Branch>> GetBranches()
         {
-            // add logic
-        }
+            List<Branch> branches = new List<Branch>();
 
-        public async Task<Branch> GetBranch(int branchId)
-        {
-            // add logic
-            return null;
-        }
+            branches = await dbContext.Branches.ToListAsync();
 
-        public async Task<string> GetBranchLocation(int branchId)
-        {
-            // add logic
-            return null;
+            return branches;
         }
     }
 }
