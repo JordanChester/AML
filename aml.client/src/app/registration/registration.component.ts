@@ -31,7 +31,7 @@ export class RegistrationComponent implements OnInit {
       next: data => {
         this.branches = data;
       }
-    })
+    });
   }
 
   onSubmit(): void {

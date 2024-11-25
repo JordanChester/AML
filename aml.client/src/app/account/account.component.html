@@ -44,28 +44,6 @@
       </div>
     </form>
   </div>
-  <div class="readonly" *ngIf="!editMode">
-    <p>
-      <strong>Name:</strong>
-      {{ currentUser.name }}
-    </p>
-    <p>
-      <strong>Email:</strong>
-      {{ currentUser.email }}
-    </p>
-    <p>
-      <strong>Address:</strong>
-      {{ currentUser.address }}
-    </p>
-    <p>
-      <strong>Phone No:</strong>
-      {{ currentUser.phone }}
-    </p>
-  </div>
-  <div class="button-container">
-    <button class="btn btn-success my-2 my-sm-0" type="button" *ngIf="!editMode" (click)="editClicked()">Edit Details</button>
-    <button class="btn btn-success my-2 my-sm-0" type="button" *ngIf="!editMode" (click)="changePassClicked()">Change Password</button>
-  </div>
   <div class="change-password" *ngIf="changePassword">
     <form name="passwordform"
           (ngSubmit)="f.form.valid && updatePassword()"
@@ -100,14 +78,69 @@
           <div *ngIf="newpassword.errors?.['required']">New password is required</div>
           <div *ngIf="newpassword.errors?.['minlength']">New password must be at least 6 characters</div>
         </div>
+        <div class="alert alert-success" *ngIf="changeSuccess">Password changed successfully.</div>
       </div>
       <div class="form-group">
         <button class="submit btn btn-success btn-block" type="button" (click)="updatePassword()">Confirm</button>
-        <div class="alert alert-success" *ngIf="changeSuccess">Password changed successfully.</div>
+        <button class="submit btn btn-success btn-block" type="button" (click)="changePassClicked()">{{ changeSuccess ? "Return" : "Cancel" }}</button>
       </div>
     </form>
   </div>
-
+  <div class="change-branch" *ngIf="changeBranch">
+    <form name="branchform"
+          (ngSubmit)="f.form.valid && updateBranch()"
+          #f="ngForm"
+          novalidate>
+      <div class="form-group">
+        <label for="branch">Branch</label>
+        <select class="form-select"
+                name="branch"
+                [(ngModel)]="branchform.branch"
+                required
+                #branch="ngModel"
+                [ngClass]="{ 'is-invalid': (branch.dirty || branch.touched) && branch.errors }">
+          <option *ngFor="let branch of branches"
+                  [ngValue]="branch">
+            {{ branch.name }}
+          </option>
+        </select>
+        <div class="invalid-feedback" *ngIf="branch && (branch.dirty || branch.touched)">
+          <div *ngIf="branch.errors?.['required']">Branch is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button class="submit btn btn-success btn-block" type="button" (click)="updateBranch()">Submit Changes</button>
+        <button class="submit btn btn-success btn-block" type="button" (click)="changeBranchClicked()">Cancel</button>
+      </div>
+    </form>
+  </div>
+  <div class="readonly" *ngIf="!showReadonly">
+    <p>
+      <strong>Name:</strong>
+      {{ currentUser.name }}
+    </p>
+    <p>
+      <strong>Email:</strong>
+      {{ currentUser.email }}
+    </p>
+    <p>
+      <strong>Address:</strong>
+      {{ currentUser.address }}
+    </p>
+    <p>
+      <strong>Phone No:</strong>
+      {{ currentUser.phone }}
+    </p>
+    <p>
+      <strong>Branch:</strong>
+      {{ userBranchName }}
+    </p>
+  </div>
+  <div class="button-container" *ngIf="!showReadonly">
+    <button class="btn btn-success my-2 my-sm-0" type="button" *ngIf="!editMode" (click)="editClicked()">Edit Details</button>
+    <button class="btn btn-success my-2 my-sm-0" type="button" *ngIf="!editMode" (click)="changePassClicked()">Change Password</button>
+    <button class="btn btn-success my-2 my-sm-0" type="button" *ngIf="!editMode" (click)="changeBranchClicked()">Change Branch</button>
+  </div>
 </div>
 } @else {
 <p>Please login.</p>
