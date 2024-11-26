@@ -137,9 +137,9 @@
     </p>
   </div>
   <div class="button-container" *ngIf="!showReadonly">
-    <button class="btn btn-success my-2 my-sm-0" type="button" *ngIf="!editMode" (click)="editClicked()">Edit Details</button>
-    <button class="btn btn-success my-2 my-sm-0" type="button" *ngIf="!editMode" (click)="changePassClicked()">Change Password</button>
-    <button class="btn btn-success my-2 my-sm-0" type="button" *ngIf="!editMode" (click)="changeBranchClicked()">Change Branch</button>
+    <button class="edit btn btn-success my-2 my-sm-0" type="button" *ngIf="!editMode" (click)="editClicked()">Edit Details</button>
+    <button class="pass btn btn-success my-2 my-sm-0" type="button" *ngIf="!editMode" (click)="changePassClicked()">Change Password</button>
+    <button class="branch btn btn-success my-2 my-sm-0" type="button" *ngIf="!editMode" (click)="changeBranchClicked()">Change Branch</button>
   </div>
 </div>
 } @else {
