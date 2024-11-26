@@ -5,7 +5,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from '../navbar/navbar.component';
 
-fdescribe('AccountComponent', () => {
+describe('AccountComponent', () => {
   let component: AccountComponent;
   let fixture: ComponentFixture<AccountComponent>;
 
@@ -15,7 +15,7 @@ fdescribe('AccountComponent', () => {
       imports: [FormsModule],
       providers: [provideHttpClient()]
     })
-      .compileComponents();
+    .compileComponents();
     
     fixture = TestBed.createComponent(AccountComponent);
     component = fixture.componentInstance;
