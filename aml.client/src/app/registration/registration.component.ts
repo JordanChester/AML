@@ -11,6 +11,7 @@ import { BranchService } from '../_services/branch.service';
 export class RegistrationComponent implements OnInit {
   form: any = {
     email: null,
+    emailval: null,
     password: null,
     accountType: 1,
     name: null,
@@ -20,8 +21,9 @@ export class RegistrationComponent implements OnInit {
   };
   branches: Array<Branch> = new Array<Branch>();
   selectedBranch: Branch | undefined;
-  isSuccessful = false;
-  isSignUpFailed = false;
+  isEmailValid: boolean = false;
+  isSuccessful: boolean = false;
+  isSignUpFailed: boolean = false;
   errorMessage = '';
 
   constructor(private authService: AuthService, private branchService: BranchService) { }
@@ -35,8 +37,26 @@ export class RegistrationComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const { email, password, accountType, name, address, phone, branch } = this.form;
+    const email = this.form.email;
+    this.authService.verifyEmail(email).subscribe({
+      next: data => {
+        if (data === true) {
+          this.register();
+        }
+        else {
+          this.isSignUpFailed = true;
+          this.errorMessage = "Email address is already in use."
+        }
+      },
+      error: err => {
+        this.errorMessage = err.error.message;
+        this.isEmailValid = false;
+      }
+    });
+  }
 
+  register() {
+    const { email, password, accountType, name, address, phone, branch } = this.form;
     this.authService.register(email, password, accountType, name, address, phone, branch).subscribe({
       next: data => {
         console.log(data);

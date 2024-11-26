@@ -4,6 +4,7 @@ using AML.Server.Interfaces;
 using AML.Server.Models;
 using Azure.Core;
 using Microsoft.EntityFrameworkCore;
+using System.Threading;
 
 namespace AML.Server.Repositories
 {
@@ -17,6 +18,18 @@ namespace AML.Server.Repositories
         {
             this.dbContext = dbContext;
             this._pepper = Environment.GetEnvironmentVariable("PasswordHashPepper");
+        }
+
+        public async Task<bool> VerifyEmail(string email)
+        {
+            var account = await dbContext.Accounts.FirstOrDefaultAsync(x => x.Email == email);
+
+            if (account == null)
+            {
+                return true;
+            }
+
+            else return false;
         }
 
         public async Task<bool> RegisterAccount(Account newAccount, CancellationToken cancellationToken) 
