@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AccountType } from '../_classes/AccountType';
 import { RegisterRequest } from '../_DTOs/RegisterRequest';
@@ -34,6 +34,19 @@ export class AuthService {
       request,
       httpOptions
     );
+  }
+
+  verifyEmail(email: string): Observable<any> {
+    let params = new HttpParams().set("email", email)
+    let httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params
+    };
+
+    return this.http.get(
+      AUTH_API + 'verify-email',
+      httpOptions
+    )
   }
 
   register(email: string, password: string, accountType: AccountType, name: string, address: string, phone: string, branch: Branch): Observable<any> {

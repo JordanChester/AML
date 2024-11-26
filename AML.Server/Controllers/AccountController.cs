@@ -21,6 +21,15 @@ namespace AML.Server.Controllers
             this._pepper = Environment.GetEnvironmentVariable("PasswordHashPepper");
         }
 
+        [HttpGet]
+        [Route("verify-email")]
+        public async Task<bool> VerifyEmail(string email)
+        {
+            bool success = false;
+            success = await _accountRepository.VerifyEmail(email);
+            return success;
+        }
+
         [HttpPost]
         [Route("register-account")]
         public async Task<bool> RegisterAccount(RegisterRequest request, CancellationToken cancellationToken)
@@ -77,24 +86,6 @@ namespace AML.Server.Controllers
         public async Task<Account> ChangePassword(ChangePasswordRequest request)
         {
             return await _accountRepository.ChangePassword(request.Email, request.OldPassword, request.NewPassword);
-        }
-
-        [HttpPost]
-        [Route("subscribe")]
-        public async Task<bool> Subscribe(int accountId)
-        {
-            // Logic going to repo & return success response
-            bool success = true;
-            return success;
-        }
-
-        [HttpPost]
-        [Route("unsubscribe")]
-        public async Task<bool> Unsubscribe(int accountId)
-        {
-            // Logic going to repo & return success response
-            bool success = true;
-            return success;
         }
     }
 }
