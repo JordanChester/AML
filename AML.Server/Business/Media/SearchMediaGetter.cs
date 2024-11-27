@@ -17,13 +17,13 @@ public class SearchMediaGetter : ISearchMediaGetter
     {
         var mediaList = new List<Models.Media>();
         
-        if (request is null)
+        if (request.Search is null)
         {
             mediaList = await this.dbContext.Media.ToListAsync();
         }
         else
         {
-            mediaList = await this.dbContext.Media.Where(x => x.Name.ToLower().Trim() == request.Search.ToLower().Trim()).ToListAsync();    
+            mediaList = await this.dbContext.Media.Where(x => x.Name.ToLower().Trim().Contains(request.Search.ToLower().Trim())).ToListAsync();    
         }
         
         return mediaList;

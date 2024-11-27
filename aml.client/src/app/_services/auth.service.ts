@@ -8,7 +8,7 @@ import { UpdateDetailsRequest } from '../_DTOs/UpdateDetailsRequest';
 import { ChangePasswordRequest } from '../_DTOs/ChangePasswordRequest';
 import { Branch } from '../_models/Branch';
 
-const AUTH_API = 'https://localhost:7033/api/account/';
+const AUTH_API = 'http://localhost:7033/api/account/';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
