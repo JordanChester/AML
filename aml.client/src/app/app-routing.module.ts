@@ -5,6 +5,7 @@ import { LibraryComponent } from './library/library.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { LoginComponent } from './login/login.component';
 import { AccountComponent } from './account/account.component';
+import {OrderMediaComponent} from "./order-media/order-media.component";
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'library',
     component: LibraryComponent
+  },
+  {
+    path: 'order',
+    component: OrderMediaComponent
   },
   {
     path: '',

@@ -5,7 +5,9 @@
 <!--               aria-label="Select page">-->
   <div>
     @for (media of mediaList; track media){
-      <app-media [media]="media"></app-media>
+      <div class="media-search-container">
+        <app-media [media]="media"></app-media>
+      </div>
     }
   </div>
 <!--</mat-paginator>-->

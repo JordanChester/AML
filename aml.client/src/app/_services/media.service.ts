@@ -3,6 +3,7 @@ import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
 import {MediaSearchRequest} from "../_DTOs/MediaSearchRequest";
 import {Media} from "../_models/Media";
+import {BorrowMediaRequest} from "../_DTOs/BorrowMediaRequest";
 
 const MEDIA_API = 'https://localhost:7033/api/media/';
 
@@ -26,5 +27,20 @@ const httpOptions = {
       request,
       httpOptions
     );
+  }
+
+  borrowMedia(userId: number, mediaId: number, start: Date, end: Date): Observable<boolean> {
+    const request: BorrowMediaRequest = {
+      userId: userId,
+      mediaId: mediaId,
+      start: start,
+      end: end,
+    }
+
+    return this.http.post<boolean>(
+      MEDIA_API + 'borrow-media',
+      request,
+      httpOptions
+    )
   }
 }
