@@ -60,6 +60,7 @@ namespace AML.Server.Controllers
         {
             Account account = await _accountRepository.VerifyLogin(request.Email, request.Password, cancellationToken);
             LoginResponse response = new LoginResponse();
+            response.Id = account.Id;
             response.Email = account.Email;
             response.Name = account.Name;
             response.Address = account.Address;

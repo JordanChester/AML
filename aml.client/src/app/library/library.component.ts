@@ -21,6 +21,7 @@ export class LibraryComponent implements OnInit{
     console.log(this.search);
 
     this.mediaList = [{
+      id: 1,
       name: 'name',
       price: 0,
       isAvailable: true,
@@ -28,6 +29,7 @@ export class LibraryComponent implements OnInit{
       description: 'test description',
     },
       {
+        id: 2,
         name: 'name2',
         price: 0,
         isAvailable: true,
