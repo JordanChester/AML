@@ -1,0 +1,20 @@
+.media-container{
+  height: 100px;
+  font-family: sans-serif;
+  margin-left: 200px;
+  margin-right: 200px;
+  margin-top: 50px;
+}
+
+.media-name{
+  font-size: 30px;
+  font-weight: bolder;
+}
+
+.media-description{
+  margin-top: 10px;
+}
+
+.button-container{
+  margin-top: 10px;
+}

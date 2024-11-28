@@ -4,7 +4,7 @@ import { Branch } from "../_models/Branch";
 import { Observable } from "rxjs";
 import { UpdateBranchRequest } from "../_DTOs/UpdateBranchRequest";
 
-const AUTH_API = 'https://localhost:7033/api/branch/';
+const AUTH_API = 'http://localhost:7033/api/branch/';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
