@@ -36,7 +36,6 @@ export class OrderMediaComponent implements OnInit{
       this.router.navigate(['']);
     }
     this.media = <Media>JSON.parse(this.mediaData);
-    console.log(this.media.price);
   }
 
   confirm(start: ɵValue<FormControl<Date | null>> | undefined, end: ɵValue<FormControl<Date | null>> | undefined): void {

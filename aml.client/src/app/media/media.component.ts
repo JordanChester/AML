@@ -11,10 +11,10 @@ import {Router} from "@angular/router";
 export class MediaComponent implements OnInit{
   @Input() media! : Media
 
-  constructor(private mediaService: MediaService, private router: Router){}
+  constructor(private router: Router){}
 
   ngOnInit(): void {
-    console.log(this.media);
+
   }
 
   order(): void{

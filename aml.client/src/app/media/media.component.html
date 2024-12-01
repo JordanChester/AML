@@ -1,7 +1,7 @@
 <div class="media-container">
-  <div class="media-name">{{media.name}} - £{{media.price}}</div>
+  <div class="media-name">{{media?.name}} - £{{media?.price}}</div>
   <div class="media-description">
-    {{media.description}}
+    {{media?.description}}
   </div>
   <div class="button-container">
     <button class="btn btn-primary" (click)="order()">Order</button>
