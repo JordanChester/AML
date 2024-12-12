@@ -4,4 +4,4 @@
 
 **Defect Form**
 
-[Bug Report Template.xlsx](https://github.com/user-attachments/files/18012031/Bug.Report.Template.xlsx)
+[Bug Report Template.xlsx](https://docs.google.com/spreadsheets/d/1SyyNPrpUlkZJYkpFMEd_qa_SPPc6GNUvIEFPIdhNCko/edit?gid=1212441556#gid=1212441556)
