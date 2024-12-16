@@ -2,7 +2,6 @@
 using AML.Server.Interfaces;
 using AML.Server.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Threading;
 
 namespace AML.Server.Repositories
 {

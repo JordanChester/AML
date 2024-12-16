@@ -13,19 +13,5 @@ namespace AML.Server.Controllers
         {
             _stockRepository = stockRepository;
         }
-
-        [HttpPost]
-        [Route("order-stock")]
-        public async Task OrderStockForBranch(int branchId, int mediaId, int amount)
-        {
-            // add logic
-        }
-
-        [HttpPost]
-        [Route("remove-media")]
-        public async Task RemoveMedia(int branchId, int mediaId)
-        {
-            // add logic
-        }
     }
 }

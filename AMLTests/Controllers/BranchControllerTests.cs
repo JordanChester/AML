@@ -1,5 +1,4 @@
-﻿using AML.Server.Business.Media;
-using AML.Server.Controllers;
+﻿using AML.Server.Controllers;
 using AML.Server.Interfaces;
 using AML.Server.Models;
 using Autofac.Extras.Moq;

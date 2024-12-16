@@ -2,9 +2,7 @@
 using AML.Server.Helpers;
 using AML.Server.Interfaces;
 using AML.Server.Models;
-using Azure.Core;
 using Microsoft.EntityFrameworkCore;
-using System.Threading;
 
 namespace AML.Server.Repositories
 {
@@ -98,18 +96,6 @@ namespace AML.Server.Repositories
             }
 
             return account;
-        }
-
-        public Task Subscribe(int accountId)
-        {
-            // add logic
-            return null;
-        }
-
-        public Task Unsubscribe(int accountId)
-        {
-            // add logic
-            return null;
         }
     }
 }

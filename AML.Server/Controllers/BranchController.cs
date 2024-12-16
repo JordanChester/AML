@@ -9,32 +9,32 @@ namespace AML.Server.Controllers
     [ApiController]
     public class BranchController
     {
-        private readonly IBranchRepository _branchRepository;
+        private readonly IBranchService _branchService;
 
-        public BranchController(IBranchRepository branchRepository)
+        public BranchController(IBranchService branchService)
         {
-            _branchRepository = branchRepository;
+            _branchService = branchService;
         }
 
         [HttpGet]
         [Route("get-branches")]
         public async Task<List<Branch>> GetBranches()
         {
-            return await _branchRepository.GetBranches();
+            return await _branchService.GetBranches();
         }
 
         [HttpGet]
         [Route("get-branch")]
         public async Task<Branch> GetBranch(int branchId)
         {
-            return await _branchRepository.GetBranch(branchId);
+            return await _branchService.GetBranch(branchId);
         }
 
         [HttpPost]
         [Route("update-branch")]
         public async Task<Account> UpdateBranch(UpdateBranchRequest request)
         {
-            return await _branchRepository.UpdateBranch(request.Email, request.Branch);
+            return await _branchService.UpdateBranch(request);
         }
     }
 }

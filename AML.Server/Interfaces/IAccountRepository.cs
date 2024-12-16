@@ -9,7 +9,5 @@ namespace AML.Server.Interfaces
         Task<Account> VerifyLogin(string email, string password, CancellationToken cancellationToken);
         Task<Account> UpdateDetails(string email, string address, string phone);
         Task<Account> ChangePassword(string email, string oldPassword, string newPassword);
-        Task Subscribe(int accountId);
-        Task Unsubscribe(int accountId);
     }
 }

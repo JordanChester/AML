@@ -1,4 +1,3 @@
-using AML.Server.Business.Media;
 using AML.Server.Data;
 using AML.Server.Interfaces;
 using AML.Server.Repositories;
@@ -23,8 +22,6 @@ builder.Services.AddScoped<IMediaRepository, MediaRepository>();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IStockRepository, StockRepository>();
 builder.Services.AddScoped<IBranchRepository, BranchRepository>();
-builder.Services.AddScoped<ISearchMediaGetter, SearchMediaGetter>();
-builder.Services.AddScoped<IBorrowMediaProcessor, BorrowMediaProcessor>();
 
 var app = builder.Build();
 

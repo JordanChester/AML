@@ -10,20 +10,5 @@ namespace AML.Server.Repositories
         {
             /*Assign injected context to declared above*/
         }
-
-        public async Task ReserveMedia(int mediaId, int accountId)
-        {
-            // add logic
-        }
-
-        public async Task BorrowMedia(int mediaId, int accountId, DateTime returnDate)
-        {
-            // add logic
-        }
-
-        public async Task ReturnMedia(int mediaId, int accountId, DateTime dateReturned)
-        {
-            // add logic
-        }
     }
 }
