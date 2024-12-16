@@ -1,6 +1,4 @@
-﻿using AML.Server.Data;
-using AML.Server.DTOs;
-using AML.Server.Helpers;
+﻿using AML.Server.DTOs;
 using AML.Server.Interfaces;
 using AML.Server.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -11,14 +9,11 @@ namespace AML.Server.Controllers
     [ApiController]
     public class AccountController : ControllerBase
     {
-        private readonly IAccountRepository _accountRepository;
-        private readonly string _pepper;
-        private readonly int _iteration = 3;
+        private readonly IAccountService _accountService;
 
-        public AccountController(IAccountRepository accountRepository)
+        public AccountController(IAccountService accountService)
         {
-            this._accountRepository = accountRepository;
-            this._pepper = Environment.GetEnvironmentVariable("PasswordHashPepper");
+            this._accountService = accountService;
         }
 
         [HttpGet]
@@ -26,7 +21,7 @@ namespace AML.Server.Controllers
         public async Task<bool> VerifyEmail(string email)
         {
             bool success = false;
-            success = await _accountRepository.VerifyEmail(email);
+            success = await _accountService.VerifyEmail(email);
             return success;
         }
 
@@ -35,22 +30,7 @@ namespace AML.Server.Controllers
         public async Task<bool> RegisterAccount(RegisterRequest request, CancellationToken cancellationToken)
         {
             bool success = false;
-            string salt = PasswordHasher.GenerateSalt();
-
-            Account newAccount = new Account(){
-                Email = request.Email,
-                PasswordSalt = salt,
-                Password = PasswordHasher.ComputeHash(request.Password, salt, _pepper, _iteration),
-                Subscribed = true,
-                Name = request.Name,
-                Address = request.Address,
-                Phone = request.Phone,
-                AccountType = request.AccountType,
-                BranchId = request.Branch.Id
-            };
-
-            success = await _accountRepository.RegisterAccount(newAccount, cancellationToken);
-
+            success = await _accountService.RegisterAccount(request, cancellationToken);
             return success;
         }
 
@@ -58,15 +38,7 @@ namespace AML.Server.Controllers
         [Route("verify-login")]
         public async Task<LoginResponse> VerifyLogin(LoginRequest request, CancellationToken cancellationToken)
         {
-            Account account = await _accountRepository.VerifyLogin(request.Email, request.Password, cancellationToken);
-            LoginResponse response = new LoginResponse();
-            response.Id = account.Id;
-            response.Email = account.Email;
-            response.Name = account.Name;
-            response.Address = account.Address;
-            response.Phone = account.Phone;
-            response.BranchId = account.BranchId;
-
+            LoginResponse response = await _accountService.VerifyLogin(request, cancellationToken);
             return response;
         }
 
@@ -74,19 +46,14 @@ namespace AML.Server.Controllers
         [Route("update-details")]
         public async Task<Account> UpdateDetails(UpdateDetailsRequest request)
         {
-            string updatedAddress = request.Address == null ? "" : request.Address;
-            string updatedPhone = request.Phone == null ? "" : request.Phone;
-
-            if (updatedAddress == "" && updatedPhone == "") throw new Exception("No valid data provided.");
-
-            return await _accountRepository.UpdateDetails(request.Email, updatedAddress, updatedPhone);
+            return await _accountService.UpdateDetails(request);
         }
 
         [HttpPost]
         [Route("change-password")]
         public async Task<Account> ChangePassword(ChangePasswordRequest request)
         {
-            return await _accountRepository.ChangePassword(request.Email, request.OldPassword, request.NewPassword);
+            return await _accountService.ChangePassword(request);
         }
     }
 }

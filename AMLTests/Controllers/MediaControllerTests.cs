@@ -1,6 +1,6 @@
-﻿using AML.Server.Business.Media;
-using AML.Server.Controllers;
+﻿using AML.Server.Controllers;
 using AML.Server.DTOs;
+using AML.Server.Interfaces;
 using AML.Server.Models;
 using Autofac.Extras.Moq;
 using Moq;
@@ -32,8 +32,8 @@ public class MediaControllerTests
 
         using (var mock = AutoMock.GetLoose())
         {
-            mock.Mock<ISearchMediaGetter>()
-                .Setup(x => x.Get(request))
+            mock.Mock<IMediaRepository>()
+                .Setup(x => x.GetMedia(request))
                 .ReturnsAsync(mediaList);
 
             var cls = mock.Create<MediaController>();
@@ -56,8 +56,8 @@ public class MediaControllerTests
 
         using (var mock = AutoMock.GetLoose())
         {
-            mock.Mock<IBorrowMediaProcessor>()
-                .Setup(x => x.Process(request));
+            mock.Mock<IMediaRepository>()
+                .Setup(x => x.BorrowMedia(request));
             
             var cls = mock.Create<MediaController>();
             var result = await cls.BorrowMedia(request);

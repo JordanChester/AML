@@ -1,5 +1,4 @@
-﻿using AML.Server.Business.Media;
-using AML.Server.DTOs;
+﻿using AML.Server.DTOs;
 using AML.Server.Interfaces;
 using AML.Server.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -10,40 +9,25 @@ namespace AML.Server.Controllers
     [ApiController]
     public class MediaController : ControllerBase
     {
-        private readonly IMediaRepository _mediaRepository;
-        private readonly ISearchMediaGetter _searchMediaGetter;
-        private readonly IBorrowMediaProcessor _borrowMediaProcessor;
+        private readonly IMediaService _mediaService;
 
-        public MediaController(IMediaRepository mediaRepository,
-            ISearchMediaGetter searchMediaGetter,
-            IBorrowMediaProcessor borrowMediaProcessor)
+        public MediaController(IMediaService mediaService)
         {
-            this._mediaRepository = mediaRepository;
-            this._searchMediaGetter = searchMediaGetter;
-            _borrowMediaProcessor = borrowMediaProcessor;
+            this._mediaService = mediaService;
         }
 
         [HttpPost]
         [Route("search-media")]
         public async Task<List<Media>> SearchMedia(SearchMediaRequest? request)
         {
-            var results = await this._searchMediaGetter.Get(request);
-            return results;
+            return await this._mediaService.GetMedia(request);
         }
 
         [HttpPost]
         [Route("borrow-media")]
         public async Task<bool> BorrowMedia(BorrowMediaRequest request)
         {
-            try
-            {
-                await _borrowMediaProcessor.Process(request);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
+            return await _mediaService.BorrowMedia(request);
         }
     }
 }

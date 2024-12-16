@@ -11,15 +11,5 @@ namespace AML.Server.Repositories
         {
             /*Assign injected context to declared above*/
         }
-
-        public async Task GetStockForBranch(int branchId, int mediaId, int amount)
-        {
-            // add logic
-        }
-
-        public async Task RemoveMedia(int branchId, int mediaId)
-        {
-            // add logic
-        }
     }
 }
